@@ -8,6 +8,8 @@ import com.springProject.account.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ConcurrentModificationException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
@@ -29,5 +31,12 @@ public class CustomerService {
 
     public CustomerDto getCustomerById(String customerId){
         return customerDtoConverter.convertToCustomerDto(findCustomerById(customerId));
+    }
+
+    public List<CustomerDto> getAllCustomer(){
+        return customerRepository.findAll()
+                .stream()
+                .map(customerDtoConverter::convertToCustomerDto)
+                .collect(Collectors.toList());
     }
 }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/v1/account/")
+@RequestMapping("/v1/account")
 public class AccountController {
     private final AccountService accountService;
 
